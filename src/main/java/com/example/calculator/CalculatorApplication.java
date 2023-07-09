@@ -25,25 +25,23 @@ public class CalculatorApplication {
         table.add(new ColumnValueData(3, new BigDecimal("0.75"), "credit_point", new BigDecimal("919.0000"), new BigDecimal("1000.0000"), null));
         table.add(new ColumnValueData(3, new BigDecimal("0.75"), "size", new BigDecimal("10.0000"), new BigDecimal("85.0000"), null));
         table.add(new ColumnValueData(3, new BigDecimal("0.75"), "grade", null, null, "3급지"));
+        table.add(new ColumnValueData(3, new BigDecimal("0.75"), "grade", null, null, "4급지"));
         table.add(new ColumnValueData(3, new BigDecimal("0.75"), "bond_rank", null, null, "선순위"));
 
-        table.add(new ColumnValueData(4, new BigDecimal("0.70"), "credit_point", new BigDecimal("919.0000"), new BigDecimal("1000.0000"), null));
-        table.add(new ColumnValueData(4, new BigDecimal("0.70"), "size", new BigDecimal("10.0000"), new BigDecimal("85.0000"), null));
-        table.add(new ColumnValueData(4, new BigDecimal("0.70"), "grade", null, null, "4급지"));
-        table.add(new ColumnValueData(4, new BigDecimal("0.70"), "bond_rank", null, null, "선순위"));
-
         System.out.println(table.getRowMap());
+        System.out.println(System.currentTimeMillis());
         CalculatorContext context = new CalculatorContext();
         UserInfo userInfo = new UserInfo();
         userInfo.setCreditPoint(929);
         context.setUserInfo(userInfo);
         HouseInfo houseInfo = new HouseInfo();
-        houseInfo.setGrade("4급지");
+        houseInfo.setGrade("3급지");
         houseInfo.setSize(BigDecimal.valueOf(82));
         houseInfo.setBondRank("선순위");
         context.setHouseInfo(houseInfo);
 
         BigDecimal ltv = table.calculate(context);
+        System.out.println(System.currentTimeMillis());
         System.out.println(ltv);
     }
 

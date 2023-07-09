@@ -1,4 +1,4 @@
-package com.example.calculator.finder;
+package com.example.calculator;
 
 import com.example.calculator.CalculatorContext;
 import com.example.calculator.dto.ColumnValueData;

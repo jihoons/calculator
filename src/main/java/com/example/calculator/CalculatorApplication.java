@@ -3,8 +3,6 @@ package com.example.calculator;
 import com.example.calculator.dto.ColumnValueData;
 import com.example.calculator.dto.HouseInfo;
 import com.example.calculator.dto.UserInfo;
-import com.example.calculator.finder.OverviewTable;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.math.BigDecimal;

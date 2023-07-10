@@ -1,20 +1,23 @@
 package com.example.calculator;
 
-import com.example.calculator.CalculatorContext;
 import com.example.calculator.dto.ColumnValueData;
-import com.example.calculator.dto.HouseInfo;
 import com.example.calculator.dto.Row;
-import com.example.calculator.dto.UserInfo;
 import com.example.calculator.type.ColumnType;
 import lombok.Getter;
+import lombok.ToString;
 
 import java.math.BigDecimal;
-import java.util.HashMap;
+import java.time.LocalDateTime;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 @Getter
+@ToString
 public class OverviewTable {
-    private Map<Long, Row> rowMap = new HashMap<>();
+    private long overviewTabSeq;
+    private LocalDateTime startAt;
+    private LocalDateTime endAt;
+    private final Map<Long, Row> rowMap = new LinkedHashMap<>();
     public void add(ColumnValueData data) {
         ColumnType columnType = ColumnType.of(data.getColName());
         if (columnType == null)
@@ -26,7 +29,7 @@ public class OverviewTable {
             _row.setOverviewTblRowSeq(_seq);
             return _row;
         });
-        row.addColumn(data.getColName(), data.getMinValue(), data.getMaxValue(), data.getLiveValue());
+        row.addColumn(columnType, data.getMinValue(), data.getMaxValue(), data.getLiveValue());
     }
 
     public BigDecimal calculate(CalculatorContext context) {
@@ -36,4 +39,18 @@ public class OverviewTable {
         }
         return row.getValue();
     }
+
+    public void setOverviewTabSeq(long overviewTabSeq) {
+        this.overviewTabSeq = overviewTabSeq;
+    }
+
+    public void setStartAt(LocalDateTime startAt) {
+        this.startAt = startAt;
+    }
+
+    public void setEndAt(LocalDateTime endAt) {
+        this.endAt = endAt;
+    }
+
+
 }

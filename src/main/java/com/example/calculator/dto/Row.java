@@ -6,17 +6,16 @@ import com.example.calculator.type.ValueType;
 import lombok.Data;
 
 import java.math.BigDecimal;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 @Data
 public class Row {
     private long overviewTblRowSeq;
     private BigDecimal value = BigDecimal.ZERO;
-    private Map<ColumnType, Column> columnMap = new HashMap<>();
+    private Map<ColumnType, Column> columnMap = new LinkedHashMap<>();
 
-    public void addColumn(String columnName, BigDecimal minValue, BigDecimal maxValue, String listValue) {
-        ColumnType columnType = ColumnType.of(columnName);
+    public void addColumn(ColumnType columnType, BigDecimal minValue, BigDecimal maxValue, String listValue) {
         if (columnType == null)
             return;
 
